@@ -4,6 +4,7 @@ import { Input } from '@/components/ui/input'
 import useGoogleFonts from '@/hooks/useGoogleFonts'
 import FontCard from './FontCard'
 import { useEffect, useState } from 'react'
+import { Tooltip, TooltipContent, TooltipTrigger } from './components/ui/tooltip'
 
 function App() {
   const [familySearch, setFamilySearch] = useState('Ubuntu')
@@ -24,12 +25,17 @@ function App() {
         <Card className={'flex h-full w-full flex-col items-start gap-3'}>
           <CardHeader className={'flex w-full flex-row justify-between gap-4'}>
             <div className={'flex h-fit items-center justify-center gap-4'}>
-              <Input
-                className={'w-full'}
-                placeholder={'Font family'}
-                value={familySearch}
-                onChange={e => setFamilySearch(e.target.value)}
-              />
+              <Tooltip>
+                <TooltipTrigger>
+                  <Input
+                    className={'w-full'}
+                    placeholder={'Font family'}
+                    value={familySearch}
+                    onChange={e => setFamilySearch(e.target.value)}
+                  />
+                </TooltipTrigger>
+                <TooltipContent className={'mb-2'} align={'start'}>Exact font family name from Google Fonts</TooltipContent>
+              </Tooltip>
               <Button
                 className={'w-40 whitespace-nowrap'}
                 onClick={() => {
