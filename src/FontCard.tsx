@@ -10,7 +10,7 @@ const removeHttp = (url: string) => {
   return url.replace('http:', '')
 }
 
-async function loadAddFont(font: Font) {
+async function loadFontStyles(font: Font) {
   const { family, files } = font
 
   if (files.regular) {
@@ -30,7 +30,7 @@ export default function FontCard(props: Props) {
 
   const { family, files } = font
   useEffect(() => {
-    loadAddFont(font)
+    loadFontStyles(font)
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
