@@ -6,16 +6,20 @@ type Props = {
   font: Font
 }
 
+const removeHttp = (url: string) => {
+  return url.replace('http:', '')
+}
+
 async function loadAddFont(font: Font) {
   const { family, files } = font
 
   if (files.regular) {
-    const fontFace = new FontFace(family, `url(${files.regular})`, { style: 'normal', weight: '400' })
+    const fontFace = new FontFace(family, `url(https:${removeHttp(files.regular)})`, { style: 'normal', weight: '400' })
     const loadedFont = await fontFace.load()
     document.fonts.add(loadedFont)
   }
   if (files.italic) {
-    const fontFace = new FontFace(family, `url(${files.italic})`, { style: 'italic', weight: '400' })
+    const fontFace = new FontFace(family, `url(https:${removeHttp(files.italic)})`, { style: 'italic', weight: '400' })
     const loadedFont = await fontFace.load()
     document.fonts.add(loadedFont)
   }

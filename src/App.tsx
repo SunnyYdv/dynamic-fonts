@@ -22,7 +22,7 @@ function App() {
     <main className={'flex h-screen w-screen'}>
       <div className={'flex h-full w-full items-center justify-center bg-neutral-100 p-8'}>
         <Card className={'flex h-full w-full flex-col items-start gap-3'}>
-          <CardHeader className={'flex flex-row w-full justify-between'}>
+          <CardHeader className={'flex w-full flex-row justify-between gap-4'}>
             <div className={'flex h-fit items-center justify-center gap-4'}>
               <Input
                 className={'w-full'}
@@ -43,7 +43,9 @@ function App() {
                 {familySearch ? 'Fetch family' : 'Fetch all'}
               </Button>
             </div>
-            <a className={'hover:underline'} href={'https://github.com/SunnyYdv/dynamic-fonts'}>Github source</a>
+            <a className={'whitespace-nowrap hover:underline'} href={'https://github.com/SunnyYdv/dynamic-fonts'}>
+              Github source
+            </a>
           </CardHeader>
           <CardContent className={'flex h-full w-full flex-col gap-6 overflow-auto'}>
             {isError && <h4 className={'w-full text-center text-red-400'}>{error.message}</h4>}
