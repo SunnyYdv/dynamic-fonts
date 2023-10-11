@@ -1,0 +1,41 @@
+{
+  "extends": "stylelint-config-standard-scss",
+  "ignoreFiles": ["./public/styles/*"],
+  "rules": {
+    "block-no-empty": null,
+    "no-descending-specificity": null,
+    "at-rule-empty-line-before": [
+      "always",
+      {
+        "except": ["blockless-after-blockless", "blockless-after-same-name-blockless", "first-nested"],
+        "ignore": ["after-comment", "inside-block"],
+        "ignoreAtRules": ["apply", "screen", "font-face", "nest"]
+      }
+    ],
+    "scss/at-rule-no-unknown": [
+      true,
+      {
+        "ignoreAtRules": ["tailwind", "layer"]
+      }
+    ],
+    "string-quotes": "single",
+    "indentation": [
+      "tab",
+      {
+        "severity": "error"
+      }
+    ],
+    "property-no-vendor-prefix": [
+      true,
+      {
+        "ignoreProperties": ["text-fill-color", "background-clip"]
+      }
+    ]
+  },
+  "overrides": [
+    {
+      "files": ["**/*.css"],
+      "rules": {}
+    }
+  ]
+}

@@ -3,7 +3,11 @@
 @tailwind utilities;
 
 body {
-  
+  @apply bg-background
+}
+
+* {
+  @apply box-border;
 }
  
 @layer base {
