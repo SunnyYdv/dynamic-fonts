@@ -21,7 +21,7 @@ function App() {
 
   return (
     <main className={'flex h-screen w-screen'}>
-      <div className={'flex-col flex h-full w-full items-start justify-center gap-3 p-8'}>
+      <div className={'flex-col flex h-full w-full items-start justify-center bg-background gap-3 p-8'}>
         <CardHeader className={'flex w-full flex-row justify-between gap-4'}>
           <div className={'flex h-fit items-center justify-center gap-y-4'}>
             <Tooltip>
