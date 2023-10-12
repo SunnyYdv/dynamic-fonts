@@ -1,5 +1,5 @@
 import { Button } from '@/components/ui/button'
-import { Card, CardContent, CardHeader } from '@/components/ui/card'
+import { CardContent, CardHeader } from '@/components/ui/card'
 import { Input } from '@/components/ui/input'
 import useGoogleFonts from '@/hooks/useGoogleFonts'
 import FontCard from './FontCard'
@@ -21,54 +21,54 @@ function App() {
 
   return (
     <main className={'flex h-screen w-screen'}>
-      <div className={'flex h-full w-full items-center justify-center bg-neutral-100 p-8'}>
-        <Card className={'flex h-full w-full flex-col items-start gap-3'}>
-          <CardHeader className={'flex w-full flex-row justify-between gap-4'}>
-            <div className={'flex h-fit items-center justify-center gap-4'}>
-              <Tooltip>
-                <TooltipTrigger>
-                  <Input
-                    className={'w-full'}
-                    placeholder={'Font family'}
-                    value={familySearch}
-                    onChange={e => setFamilySearch(e.target.value)}
-                  />
-                </TooltipTrigger>
-                <TooltipContent className={'mb-2'} align={'start'}>Exact font family name from Google Fonts</TooltipContent>
-              </Tooltip>
-              <Button
-                className={'w-40 whitespace-nowrap'}
-                onClick={() => {
-                  if (!familySearch) {
-                    fetchFonts({})
-                    return
-                  }
-                  fetchFonts({ family: familySearch })
-                }}
-              >
-                {familySearch ? 'Fetch family' : 'Fetch all'}
-              </Button>
-            </div>
-            <a className={'whitespace-nowrap hover:underline'} href={'https://github.com/SunnyYdv/dynamic-fonts'}>
-              Github source
-            </a>
-          </CardHeader>
-          <CardContent className={'flex h-full w-full flex-col gap-6 overflow-auto'}>
-            {isError && <h4 className={'w-full text-center text-red-400'}>{error.message}</h4>}
-            {isLoading && (
-              <div
-                className={
-                  'm-auto h-10 w-10 animate-spin rounded-full border-4 border-primary-foreground border-r-primary'
+      <div className={'flex-col flex h-full w-full items-start justify-center gap-3 p-8'}>
+        <CardHeader className={'flex w-full flex-row justify-between gap-4'}>
+          <div className={'flex h-fit items-center justify-center gap-y-4'}>
+            <Tooltip>
+              <TooltipTrigger>
+                <Input
+                  className={'w-full'}
+                  placeholder={'Font family'}
+                  value={familySearch}
+                  onChange={e => setFamilySearch(e.target.value)}
+                />
+              </TooltipTrigger>
+              <TooltipContent className={'mb-2'} align={'start'}>
+                Exact font family name from Google Fonts
+              </TooltipContent>
+            </Tooltip>
+            <Button
+              className={'w-40 whitespace-nowrap'}
+              onClick={() => {
+                if (!familySearch) {
+                  fetchFonts({})
+                  return
                 }
-              />
-            )}
-            {!isLoading &&
-              fonts &&
-              fonts.map(font => {
-                return <FontCard key={font.family} font={font} />
-              })}
-          </CardContent>
-        </Card>
+                fetchFonts({ family: familySearch })
+              }}
+            >
+              {familySearch ? 'Fetch family' : 'Fetch all'}
+            </Button>
+          </div>
+          <a className={'whitespace-nowrap hover:underline'} href={'https://github.com/SunnyYdv/dynamic-fonts'}>
+            Github source
+          </a>
+        </CardHeader>
+        <CardContent className={'flex h-full w-full flex-col gap-6 overflow-auto'}>
+          {isError && <h4 className={'w-full text-center text-red-400'}>{error.message}</h4>}
+          {isLoading && (
+            <div
+              className={
+                'm-auto h-10 w-10 animate-spin rounded-full border-4 border-primary-foreground border-r-primary'
+              }
+            />
+          )}
+          {!isLoading &&
+            fonts &&
+            fonts.map(font => {
+              return <FontCard key={font.family} font={font} />
+            })}
+        </CardContent>
       </div>
     </main>
   )
